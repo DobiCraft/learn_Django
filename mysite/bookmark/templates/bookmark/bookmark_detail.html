@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Django Bookmark Detail</title>
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block title %}Django Bookmark Detail{% endblock %}
 
-<div id="container">
+{% block content %}
+
+
+<div id="content">
 
     <h1>{{ object.title }}</h1>
 
@@ -16,6 +15,10 @@
 
 </div>
 
-</body>
-</html>
+{% endblock content %}
 
+{% block footer %}
+<div id="footer">
+    &copy; hobin 2018
+</div>
+{% endblock footer %}
