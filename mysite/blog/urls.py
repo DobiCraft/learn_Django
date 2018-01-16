@@ -27,4 +27,8 @@ urlpatterns = [
 
     # Example: /today/
     path('today/', PostTAV.as_view(), name='post_today_archive'),
+    
+    path('tag/', TagTV.as_view(), name='tag_cloud'),
+    
+    re_path('tag/(?P<tag>[^/]+(?u))/$', PostTOL.as_view(), name='tagged_object_list'),
 ]

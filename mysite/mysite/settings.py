@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookmark.apps.BookmarkConfig',
     'blog.apps.BlogConfig',
+    'tagging.apps.TaggingConfig',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates_test')], #path of templates-folder
+        'DIRS': [os.path.join(BASE_DIR,'templates')], #path of templates-folder
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
