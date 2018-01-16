@@ -31,4 +31,6 @@ urlpatterns = [
     path('tag/', TagTV.as_view(), name='tag_cloud'),
     
     re_path('tag/(?P<tag>[^/]+(?u))/$', PostTOL.as_view(), name='tagged_object_list'),
+    
+    path('search/', SearchFormView.as_view(), name='search'),
 ]

@@ -6,6 +6,12 @@ from blog.models import Post
 from django.views.generic.base import TemplateView
 from tagging.views import TaggedObjectList
 
+from blog.forms import PostSearchForm
+from django.views.generic.edit import FormView
+from django.db.models import Q
+from django.forms.forms import Form
+from django.shortcuts import render
+
 # Create your views here.
 
 #--- ListView
@@ -53,4 +59,19 @@ class TagTV(TemplateView):
 class PostTOL(TaggedObjectList):
     model = Post ;
     template_name = 'tagging/tagging_post_list.html'
+    
+#form view
+class SearchFormView(FormView):
+    form_class = PostSearchForm # class name is defined forms.py
+    template_name = 'blog/post_search.html'
+    
+    def form_valid(self, form):
+        schWord = '%s' % self.request.POST['search_word']
+        post_list = Post.objects.filter(Q(title__icontains=schWord)|Q(description__icontains=schWord)|Q(content__icontains=schWord)).distinct()
+        context = {}
+        context['form'] = form
+        context['search_term'] = schWord
+        context['object_list'] = post_list
+        
+        return render(self.request, self.template_name, context)
     
