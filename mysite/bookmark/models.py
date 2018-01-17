@@ -10,5 +10,5 @@ class Bookmark(models.Model):
     url = models.URLField('url', unique=True)
 
     #def __unicode__(self):
-    def __str__(self): #인스턴스 출력시 반환하는 데어터 형태를 지정. print(object)시 title을 출력함.
+    def __str__(self): 
         return self.title
